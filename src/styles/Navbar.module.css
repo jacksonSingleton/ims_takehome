@@ -1,0 +1,74 @@
+ @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&family=Outfit:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+.navbar{
+    background-color: darkslategray;
+    margin-bottom: 0;
+    padding: 0.25rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.5rem solid orangered;
+    
+}
+
+.navbar > h1 {
+    font-family: 'Poller One', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+}
+.navbar > h1::selection{
+    color: white;
+    background-color: orangered;
+}
+
+
+.magnitude-input{
+    width: 48rem;
+    height: 100%;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    background-color: transparent;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.magnitude-input > input{
+    width: 40%;
+    height: 100%;
+    border: none;
+    background-color: #203636;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    outline: none;
+    /* hide number input arrows */
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
+.magnitude-input > input::placeholder{
+    color: white;
+    opacity: 0.1;
+}
+.magnitude-input > label{
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+@media screen and (max-width: 768px){
+   .magnitude-input{
+       display: none;
+   }
+}
+@media screen and (max-width: 1024px){
+   .magnitude-input > input{
+       font-size: 1rem;
+   }
+}

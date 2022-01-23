@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap");
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+.list > h1 {
+    font-family: "Outfit", sans-serif;
+    font-size: 2.5rem;
+    border-bottom: 0.25rem solid orangered;
+    color: #121212;
+    width: 60%;
+    padding: 2rem;
+}
+
+.btn {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    color: white;
+    background-color: orangered;
+    font-size: 1rem;
+    font-family: "Outfit", sans-serif;
+    cursor: pointer;
+    margin: 1rem;
+    align-items: center;
+}
+.btn:disabled {
+    background-color: gray;
+    color: white;
+}
+table {
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+    table {
+        width: 90%;
+        font-size: 1rem;
+    }
+    th:nth-child(4),
+    td:nth-child(4){
+        display: none;
+    }
+
+}
+tr {
+    border: 0.1rem solid gray;
+    border-radius: 0.5rem;
+}
+td {
+    padding: 1.5rem;
+    border: 0.1rem solid gray;
+}
+td:nth-child(even) {
+    background-color: #ffe7d6;
+}
+.hidden {
+    display: none;
+}
+.asc {
+    transition: transform 0.25s;
+    transform: rotate(-180deg);
+}
+.desc {
+    transition: transform 0.25s;
+}
+select {
+    padding: 1rem;
+    font-size: 1rem;
+    margin: 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+}
