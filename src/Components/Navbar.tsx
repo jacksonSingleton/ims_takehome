@@ -8,6 +8,10 @@ function Navbar(){
         if(e.key === 'Backspace' || e.key === '.'){
             return;
         }
+        else if(e.key === 'Enter'){
+            e.preventDefault();
+            return;
+        }
         else{
             setMagnitude(Number(e.target.value));
         }

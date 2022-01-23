@@ -2,8 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
-window.URL.createObjectURL = function() {};
-
 test('check to ensure app is rendering', () => {
    render(<App />);
    expect(screen.getByText('SEISMA')).toBeInTheDocument();
