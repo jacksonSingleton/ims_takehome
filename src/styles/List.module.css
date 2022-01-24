@@ -74,10 +74,16 @@ td:nth-child(even) {
     display: none;
 }
 a{
-    color: orange;
+    color: orangered;
 }
 a:visited{
-    color: orangered;
+    color: #2E0C00;
+}
+.dark > a{
+	color: orange
+}
+.dark > a:visited{
+	color: orangered;
 }
 .asc {
     transition: transform 0.25s;
