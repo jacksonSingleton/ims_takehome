@@ -1,6 +1,7 @@
 # Getting Started
 
 Clone the project and install dependencies using `yarn install`
+
 Once the project is installed, it can be run via `yarn start`
 ## Available Scripts
 
