@@ -67,8 +67,17 @@ td {
 td:nth-child(even) {
     background-color: #ffe7d6;
 }
+.dark + td:nth-child(even){
+    background-color: #2E0C00;
+}
 .hidden {
     display: none;
+}
+a{
+    color: orange;
+}
+a:visited{
+    color: orangered;
 }
 .asc {
     transition: transform 0.25s;
@@ -76,6 +85,14 @@ td:nth-child(even) {
 }
 .desc {
     transition: transform 0.25s;
+}
+.dark{
+    background-color: #121F1F;
+    color: white;
+}
+
+.dark > h1 {
+    color: white;
 }
 select {
     padding: 1rem;

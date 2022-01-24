@@ -5,11 +5,13 @@ import Navbar from "./Components/Navbar";
 import Map from "./Components/Map";
 import List from "./Components/List";
 import MagnitudeContext from "./Contexts/magnitude-context";
+import ThemeContext from "./Contexts/theme-context";
 import axios from "axios";
 
 function App() {
     const [magnitude, setMagnitude] = React.useState(1);
     const [features, setFeatures] = React.useState([]);
+    const [theme, setTheme] = React.useState("light");
     function filterData(magnitude: number){
         return features.filter((feature: any) => {
             if(feature.properties.mag >= magnitude){
@@ -27,14 +29,17 @@ function App() {
         })
     }, []);
     filterData(magnitude);
-    let value = { magnitude, setMagnitude };
+    let magValue = { magnitude, setMagnitude };
+    let themeValue = { theme, setTheme };
     return (
-        <div className="App">
-            <MagnitudeContext.Provider value={value}>
-                <Navbar />
-                <Map features={features} />
-                <List items={features} />
-            </MagnitudeContext.Provider>
+        <div className={"App" + theme}>
+            <ThemeContext.Provider value={themeValue}>
+                <MagnitudeContext.Provider value={magValue}>
+                    <Navbar />
+                    <Map features={features} />
+                    <List items={features} />
+                </MagnitudeContext.Provider>
+            </ThemeContext.Provider>
         </div>
     );
 }

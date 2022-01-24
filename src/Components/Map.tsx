@@ -2,6 +2,7 @@ import * as React from "react";
 import mapboxgl from "mapbox-gl";
 import "../styles/Map.css";
 import MagnitudeContext from "../Contexts/magnitude-context";
+import ThemeContext from "../Contexts/theme-context";
 const accessToken =
     "pk.eyJ1IjoiamFja3NvbnNpbmdsZXRvbiIsImEiOiJjajhxMjA1N2QwZW0wMnhxdWUwdmRxOTM0In0.U7N0I-68nKYeAdnCW20ZcQ";
 
@@ -11,6 +12,7 @@ type MapProps = {
 function Map({ features }: MapProps) {
     const [map, setMap] = React.useState<mapboxgl.Map>();
     const { magnitude, setMagnitude } = React.useContext(MagnitudeContext);
+    const { theme, setTheme } = React.useContext(ThemeContext);
     const mapNode = React.useRef(null);
 
     function addMarker(marker: any, map: mapboxgl.Map, minMag: number = 5, element: HTMLElement) {
@@ -37,7 +39,6 @@ function Map({ features }: MapProps) {
         else if(marker.properties.mag > 5){
             element.style.backgroundColor = "#FF0D22";
         }
-        
     }
 
     React.useEffect(() => {
@@ -47,7 +48,7 @@ function Map({ features }: MapProps) {
         const mapboxMap = new mapboxgl.Map({
             container: node,
             accessToken: accessToken,
-            style: "mapbox://styles/mapbox/dark-v10",
+            style: `mapbox://styles/mapbox/${theme}-v10`,
             center: [-95.72, 37.09],
             zoom: 4,
             attributionControl: false,
@@ -64,7 +65,7 @@ function Map({ features }: MapProps) {
         return () => {
             mapboxMap.remove();
         };
-    }, [features, magnitude]);
+    }, [features, magnitude, theme]);
     const nav = new mapboxgl.NavigationControl();
     return <div ref={mapNode} className="map-node"></div>;
 }
