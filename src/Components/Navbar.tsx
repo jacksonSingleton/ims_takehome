@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styles from "../styles/Navbar.module.css";
 import MagnitudeContext from "../Contexts/magnitude-context";
 import ThemeContext from "../Contexts/theme-context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { useCookies } from "react-cookie";
 
 function Navbar() {
     const { magnitude, setMagnitude } = useContext(MagnitudeContext);
     const { theme, setTheme } = useContext(ThemeContext);
+    const [cookies, setCookie] = useCookies(["theme"]);
     function handleChange(e: any) {
         if (e.key === "Backspace" || e.key === ".") {
             return;
@@ -25,6 +27,9 @@ function Navbar() {
             setTheme("light");
         }
     }
+    useEffect(() => {
+        setCookie("theme", theme);
+    }, [theme]);
     return (
         <div className={styles.navbar}>
             <h1>SEISMA</h1>
@@ -45,6 +50,7 @@ function Navbar() {
                     className={styles.checkbox}
                     id="checkbox"
                     onChange={() => changeScheme()}
+                    checked={theme === "dark" ? true : false}
                 />
                 <label htmlFor="checkbox" className={styles["checkbox-label"]}>
                     <FontAwesomeIcon

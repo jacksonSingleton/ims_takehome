@@ -7,11 +7,13 @@ import List from "./Components/List";
 import MagnitudeContext from "./Contexts/magnitude-context";
 import ThemeContext from "./Contexts/theme-context";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 function App() {
     const [magnitude, setMagnitude] = React.useState(1);
     const [features, setFeatures] = React.useState([]);
     const [theme, setTheme] = React.useState("light");
+    const [cookies, setCookie] = useCookies(["theme"]);
     function filterData(magnitude: number){
         return features.filter((feature: any) => {
             if(feature.properties.mag >= magnitude){
@@ -27,6 +29,9 @@ function App() {
         .catch(err => {
             console.log(err);
         })
+    }, []);
+    useEffect(() => {
+        setTheme(cookies.theme);
     }, []);
     filterData(magnitude);
     let magValue = { magnitude, setMagnitude };
